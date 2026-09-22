@@ -1,0 +1,44 @@
+# ============================================
+# PLATAFORMA DE GESTÃO DE PROJETOS
+# ============================================
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# .NET
+**/bin/
+**/obj/
+
+# Node / React
+**/node_modules/
+**/dist/
+
+# Logs
+*.log
+logs/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
+
+# Visual Studio Code
+.vscode/
+
+# Variáveis de ambiente
+.env
+.env.*
+!.env.example
+
+# Ficheiros temporários
+*.tmp
+*.temp
+
+# Uploads locais da aplicação
+**/wwwroot/uploads/*
+!**/wwwroot/uploads/.gitkeep
+# Backup local - nao publicar
+_backup/

@@ -1,0 +1,1058 @@
+/* =========================================================
+   HISTÓRICO — INTERFACE PREMIUM
+   Plataforma de Gestão de Projetos
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+.historico-shell {
+    --hist-bg: #f4f7fb;
+    --hist-surface: #ffffff;
+    --hist-surface-soft: #f8fafc;
+    --hist-surface-muted: #f1f5f9;
+    --hist-border: #e3e9f1;
+    --hist-border-strong: #d6dfeb;
+    --hist-text: #172033;
+    --hist-text-2: #405069;
+    --hist-muted: #7c899c;
+    --hist-muted-2: #9aa6b6;
+    --hist-primary: #2563eb;
+    --hist-primary-2: #1d4ed8;
+    --hist-primary-soft: #edf4ff;
+    --hist-success: #0f9f72;
+    --hist-success-soft: #eafaf4;
+    --hist-danger: #d84a4a;
+    --hist-danger-soft: #fff1f1;
+    --hist-warning: #d58a16;
+    --hist-warning-soft: #fff8e8;
+    --hist-shadow: 0 12px 35px rgba(20, 35, 60, 0.07);
+    --hist-shadow-soft: 0 4px 18px rgba(20, 35, 60, 0.045);
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    align-items: stretch;
+    background: radial-gradient(circle at 72% -20%, rgba(37, 99, 235, 0.07), transparent 30%), var(--hist-bg);
+    color: var(--hist-text);
+    font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* Compatibilidade com os modos escuros usados no projeto */
+html[data-theme="dark"] .historico-shell,
+html.dark .historico-shell,
+body.dark .historico-shell,
+body.dark-mode .historico-shell,
+[data-theme="dark"] .historico-shell {
+    --hist-bg: #0c1929;
+    --hist-surface: #15253a;
+    --hist-surface-soft: #122136;
+    --hist-surface-muted: #1a2d45;
+    --hist-border: #2a405b;
+    --hist-border-strong: #36506f;
+    --hist-text: #f4f7fb;
+    --hist-text-2: #c6d2e2;
+    --hist-muted: #8fa3bc;
+    --hist-muted-2: #7188a4;
+    --hist-primary: #4f8cff;
+    --hist-primary-2: #70a3ff;
+    --hist-primary-soft: rgba(62, 126, 244, 0.14);
+    --hist-success: #56d7ad;
+    --hist-success-soft: rgba(41, 180, 137, 0.12);
+    --hist-danger: #ff7d7d;
+    --hist-danger-soft: rgba(220, 70, 70, 0.12);
+    --hist-warning: #f3bd55;
+    --hist-warning-soft: rgba(218, 153, 36, 0.12);
+    --hist-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+    --hist-shadow-soft: 0 5px 20px rgba(0, 0, 0, 0.13);
+}
+
+/* =========================================================
+   ÁREA PRINCIPAL
+   ========================================================= */
+
+.historico-main {
+    flex: 1;
+    min-width: 0;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+}
+
+/* =========================================================
+   TOPBAR
+   ========================================================= */
+
+.historico-topbar {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    height: 76px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 38px;
+    border-bottom: 1px solid var(--hist-border);
+    background: color-mix(in srgb, var(--hist-surface) 94%, transparent);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.historico-topbar-location {
+    color: var(--hist-muted);
+    font-size: 12px;
+    font-weight: 650;
+    letter-spacing: 0.01em;
+}
+
+.historico-topbar-profile {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
+.historico-topbar-avatar {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid color-mix(in srgb, var(--hist-primary) 20%, transparent);
+    border-radius: 12px;
+    background: var(--hist-primary-soft);
+    color: var(--hist-primary);
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: 0.03em;
+}
+
+.historico-topbar-profile > div:last-child {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.historico-topbar-profile strong {
+    color: var(--hist-text);
+    font-size: 12px;
+    font-weight: 750;
+}
+
+.historico-topbar-profile span {
+    margin-top: 2px;
+    color: var(--hist-muted);
+    font-size: 10px;
+    font-weight: 550;
+}
+
+/* =========================================================
+   CONTEÚDO / CABEÇALHO
+   ========================================================= */
+
+.historico-content {
+    width: 100%;
+    max-width: 1680px;
+    margin: 0 auto;
+    padding: 38px 40px 48px;
+}
+
+.historico-heading {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 27px;
+}
+
+.historico-eyebrow {
+    display: block;
+    margin-bottom: 9px;
+    color: var(--hist-primary);
+    font-size: 10px;
+    font-weight: 850;
+    letter-spacing: 1.65px;
+}
+
+.historico-heading h1 {
+    margin: 0;
+    color: var(--hist-text);
+    font-size: clamp(30px, 2.3vw, 38px);
+    font-weight: 800;
+    line-height: 1.08;
+    letter-spacing: -1.2px;
+}
+
+.historico-heading p {
+    margin: 9px 0 0;
+    max-width: 720px;
+    color: var(--hist-muted);
+    font-size: 13px;
+    line-height: 1.65;
+}
+
+/* =========================================================
+   BOTÃO ATUALIZAR
+   ========================================================= */
+
+.historico-refresh-main {
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 0 15px;
+    border: 1px solid var(--hist-border-strong);
+    border-radius: 10px;
+    background: var(--hist-surface);
+    color: var(--hist-text-2);
+    box-shadow: var(--hist-shadow-soft);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 750;
+    cursor: pointer;
+    transition: transform 0.16s ease, background 0.16s ease, border-color 0.16s ease, color 0.16s ease;
+}
+
+    .historico-refresh-main:hover:not(:disabled) {
+        transform: translateY(-1px);
+        border-color: color-mix(in srgb, var(--hist-primary) 45%, var(--hist-border));
+        background: var(--hist-primary-soft);
+        color: var(--hist-primary);
+    }
+
+    .historico-refresh-main:disabled {
+        cursor: default;
+        opacity: 0.65;
+    }
+
+/* =========================================================
+   ALERTAS
+   ========================================================= */
+
+.historico-alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    padding: 13px 15px;
+    border-radius: 11px;
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.historico-alert-error {
+    border: 1px solid color-mix(in srgb, var(--hist-danger) 28%, transparent);
+    background: var(--hist-danger-soft);
+    color: var(--hist-danger);
+}
+
+.historico-alert-success {
+    border: 1px solid color-mix(in srgb, var(--hist-success) 28%, transparent);
+    background: var(--hist-success-soft);
+    color: var(--hist-success);
+}
+
+/* =========================================================
+   CARD PRINCIPAL
+   ========================================================= */
+
+.historico-card {
+    overflow: hidden;
+    border: 1px solid var(--hist-border);
+    border-radius: 16px;
+    background: var(--hist-surface);
+    box-shadow: var(--hist-shadow);
+}
+
+/* =========================================================
+   TOOLBAR / PESQUISA
+   ========================================================= */
+
+.historico-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 19px 21px;
+    border-bottom: 1px solid var(--hist-border);
+    background: var(--hist-surface);
+}
+
+.historico-search {
+    width: min(620px, 100%);
+    height: 43px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 13px;
+    border: 1px solid var(--hist-border-strong);
+    border-radius: 10px;
+    background: var(--hist-surface-soft);
+    color: var(--hist-muted);
+    transition: border-color 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+    .historico-search:focus-within {
+        border-color: color-mix(in srgb, var(--hist-primary) 62%, var(--hist-border));
+        background: var(--hist-surface);
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--hist-primary) 12%, transparent);
+    }
+
+    .historico-search input {
+        width: 100%;
+        border: 0;
+        outline: 0;
+        background: transparent;
+        color: var(--hist-text);
+        font-family: inherit;
+        font-size: 12px;
+        font-weight: 550;
+    }
+
+        .historico-search input::placeholder {
+            color: var(--hist-muted-2);
+        }
+
+.historico-clear-button {
+    min-height: 39px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 0 13px;
+    border: 1px solid var(--hist-border);
+    border-radius: 9px;
+    background: var(--hist-surface-soft);
+    color: var(--hist-muted);
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 750;
+    cursor: pointer;
+    transition: 0.16s ease;
+}
+
+    .historico-clear-button:hover {
+        border-color: color-mix(in srgb, var(--hist-primary) 35%, var(--hist-border));
+        background: var(--hist-primary-soft);
+        color: var(--hist-primary);
+    }
+
+/* =========================================================
+   FILTROS
+   ========================================================= */
+
+.historico-filters {
+    display: grid;
+    grid-template-columns: auto minmax(175px, 1.25fr) minmax(150px, 1fr) minmax(150px, 1fr) minmax(170px, 1fr) minmax(145px, 0.8fr);
+    align-items: center;
+    gap: 10px;
+    padding: 15px 21px;
+    border-bottom: 1px solid var(--hist-border);
+    background: var(--hist-surface-soft);
+}
+
+.historico-filter-title {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding-right: 7px;
+    color: var(--hist-muted);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+    text-transform: uppercase;
+}
+
+    .historico-filter-title svg {
+        color: var(--hist-primary);
+    }
+
+.historico-filters select {
+    width: 100%;
+    height: 39px;
+    padding: 0 31px 0 11px;
+    border: 1px solid var(--hist-border);
+    border-radius: 9px;
+    outline: 0;
+    background: var(--hist-surface);
+    color: var(--hist-text-2);
+    font-family: inherit;
+    font-size: 10.5px;
+    font-weight: 650;
+    cursor: pointer;
+}
+
+    .historico-filters select:focus {
+        border-color: color-mix(in srgb, var(--hist-primary) 58%, var(--hist-border));
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--hist-primary) 9%, transparent);
+    }
+
+.historico-filters option {
+    background: var(--hist-surface);
+    color: var(--hist-text);
+}
+
+/* =========================================================
+   TABELA
+   ========================================================= */
+
+.historico-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--hist-border-strong) transparent;
+}
+
+.historico-table {
+    width: 100%;
+    min-width: 1080px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: auto;
+}
+
+    .historico-table thead {
+        background: var(--hist-surface-muted);
+    }
+
+    .historico-table th {
+        padding: 13px 15px;
+        border-bottom: 1px solid var(--hist-border);
+        color: var(--hist-muted);
+        font-size: 9px;
+        font-weight: 850;
+        letter-spacing: 0.65px;
+        text-align: left;
+        text-transform: uppercase;
+        white-space: nowrap;
+    }
+
+    .historico-table td {
+        padding: 15px;
+        border-bottom: 1px solid var(--hist-border);
+        color: var(--hist-text-2);
+        font-size: 11px;
+        vertical-align: middle;
+    }
+
+    .historico-table tbody tr {
+        background: var(--hist-surface);
+        transition: background 0.15s ease;
+    }
+
+        .historico-table tbody tr:hover {
+            background: color-mix(in srgb, var(--hist-primary) 3.5%, var(--hist-surface));
+        }
+
+        .historico-table tbody tr:last-child td {
+            border-bottom: 0;
+        }
+
+/* =========================================================
+   DATA
+   ========================================================= */
+
+.historico-date-cell {
+    min-width: 125px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+    .historico-date-cell svg {
+        flex-shrink: 0;
+        color: var(--hist-primary);
+    }
+
+    .historico-date-cell > div {
+        display: flex;
+        flex-direction: column;
+        gap: 3px;
+    }
+
+    .historico-date-cell strong {
+        color: var(--hist-text);
+        font-size: 10.5px;
+        font-weight: 750;
+        white-space: nowrap;
+    }
+
+    .historico-date-cell span {
+        color: var(--hist-muted);
+        font-size: 9.5px;
+    }
+
+/* =========================================================
+   AÇÃO
+   ========================================================= */
+
+.historico-action-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 26px;
+    padding: 0 10px;
+    border: 1px solid color-mix(in srgb, var(--hist-primary) 16%, transparent);
+    border-radius: 999px;
+    background: var(--hist-primary-soft);
+    color: var(--hist-primary);
+    font-size: 9px;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+/* =========================================================
+   ENTIDADE
+   ========================================================= */
+
+.historico-entity-cell {
+    min-width: 110px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+    .historico-entity-cell strong {
+        color: var(--hist-text);
+        font-size: 10.5px;
+        font-weight: 750;
+    }
+
+    .historico-entity-cell span {
+        color: var(--hist-muted);
+        font-size: 9px;
+    }
+
+/* =========================================================
+   PROJETO
+   ========================================================= */
+
+.historico-project-cell {
+    min-width: 145px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+    .historico-project-cell strong {
+        color: var(--hist-primary);
+        font-size: 10px;
+        font-weight: 850;
+    }
+
+    .historico-project-cell span {
+        max-width: 200px;
+        overflow: hidden;
+        color: var(--hist-muted);
+        font-size: 9.5px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+/* =========================================================
+   UTILIZADOR
+   ========================================================= */
+
+.historico-user-cell {
+    min-width: 125px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--hist-text-2);
+    font-weight: 600;
+}
+
+    .historico-user-cell svg {
+        flex-shrink: 0;
+        color: var(--hist-muted);
+    }
+
+/* =========================================================
+   DESCRIÇÃO
+   ========================================================= */
+
+.historico-description {
+    width: min(360px, 28vw);
+    overflow: hidden;
+    color: var(--hist-muted);
+    font-size: 10.5px;
+    line-height: 1.5;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.historico-muted {
+    color: var(--hist-muted-2);
+    font-size: 10px;
+    font-style: italic;
+}
+
+/* =========================================================
+   AÇÕES
+   ========================================================= */
+
+.historico-actions-column {
+    text-align: right !important;
+}
+
+.historico-row-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+.historico-action-button {
+    width: 33px;
+    height: 33px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--hist-border);
+    border-radius: 8px;
+    background: var(--hist-surface-soft);
+    color: var(--hist-muted);
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+    .historico-action-button:hover {
+        transform: translateY(-1px);
+        border-color: color-mix(in srgb, var(--hist-primary) 35%, var(--hist-border));
+        background: var(--hist-primary-soft);
+        color: var(--hist-primary);
+    }
+
+.historico-action-danger:hover {
+    border-color: color-mix(in srgb, var(--hist-danger) 35%, var(--hist-border));
+    background: var(--hist-danger-soft);
+    color: var(--hist-danger);
+}
+
+/* =========================================================
+   ESTADO VAZIO / LOADING
+   ========================================================= */
+
+.historico-empty {
+    height: 210px;
+    text-align: center;
+    color: var(--hist-muted) !important;
+}
+
+    .historico-empty > svg {
+        display: block;
+        margin: 0 auto 10px;
+        color: var(--hist-muted-2);
+    }
+
+    .historico-empty > strong {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--hist-text-2);
+        font-size: 12px;
+    }
+
+    .historico-empty > span {
+        color: var(--hist-muted);
+        font-size: 10px;
+    }
+
+.historico-loading {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    color: var(--hist-muted);
+}
+
+/* =========================================================
+   RODAPÉ
+   ========================================================= */
+
+.historico-footer {
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 0 21px;
+    border-top: 1px solid var(--hist-border);
+    background: var(--hist-surface-soft);
+}
+
+    .historico-footer span {
+        color: var(--hist-muted);
+        font-size: 10px;
+        font-weight: 650;
+    }
+
+/* =========================================================
+   MODAL
+   ========================================================= */
+
+.historico-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 200;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+    background: rgba(4, 13, 27, 0.68);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+.historico-modal {
+    width: min(740px, 100%);
+    max-height: calc(100vh - 56px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid var(--hist-border-strong);
+    border-radius: 17px;
+    background: var(--hist-surface);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.32);
+}
+
+.historico-modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 21px 24px;
+    border-bottom: 1px solid var(--hist-border);
+    background: var(--hist-surface);
+}
+
+.historico-modal-title {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+}
+
+.historico-modal-icon {
+    width: 43px;
+    height: 43px;
+    flex: 0 0 43px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 11px;
+    background: var(--hist-primary-soft);
+    color: var(--hist-primary);
+}
+
+.historico-modal-title > div:last-child {
+    min-width: 0;
+}
+
+.historico-modal-title span {
+    display: block;
+    margin-bottom: 4px;
+    color: var(--hist-primary);
+    font-size: 9px;
+    font-weight: 850;
+    letter-spacing: 1.35px;
+}
+
+.historico-modal-title h2 {
+    margin: 0;
+    color: var(--hist-text);
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: -0.35px;
+}
+
+.historico-modal-close {
+    width: 35px;
+    height: 35px;
+    flex: 0 0 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    border-radius: 9px;
+    background: transparent;
+    color: var(--hist-muted);
+    cursor: pointer;
+    transition: 0.15s ease;
+}
+
+    .historico-modal-close:hover {
+        border-color: var(--hist-border);
+        background: var(--hist-surface-muted);
+        color: var(--hist-text);
+    }
+
+.historico-modal-body {
+    min-height: 0;
+    padding: 23px 24px 25px;
+    overflow-y: auto;
+}
+
+.historico-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 13px;
+}
+
+.historico-detail {
+    min-width: 0;
+    padding: 14px 15px;
+    border: 1px solid var(--hist-border);
+    border-radius: 10px;
+    background: var(--hist-surface-soft);
+}
+
+.historico-detail-full {
+    grid-column: 1 / -1;
+}
+
+.historico-detail > span {
+    display: block;
+    margin-bottom: 7px;
+    color: var(--hist-muted);
+    font-size: 8.5px;
+    font-weight: 850;
+    letter-spacing: 0.55px;
+    text-transform: uppercase;
+}
+
+.historico-detail strong {
+    color: var(--hist-text);
+    font-size: 11.5px;
+    font-weight: 750;
+    line-height: 1.5;
+}
+
+.historico-detail p {
+    margin: 0;
+    color: var(--hist-text-2);
+    font-size: 11.5px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+.historico-audit-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 11px;
+    margin-top: 17px;
+    padding: 14px 15px;
+    border: 1px solid color-mix(in srgb, var(--hist-primary) 18%, var(--hist-border));
+    border-radius: 10px;
+    background: var(--hist-primary-soft);
+    color: var(--hist-text-2);
+}
+
+    .historico-audit-notice svg {
+        flex-shrink: 0;
+        margin-top: 1px;
+        color: var(--hist-primary);
+    }
+
+    .historico-audit-notice > div {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .historico-audit-notice strong {
+        color: var(--hist-text);
+        font-size: 10.5px;
+        font-weight: 800;
+    }
+
+    .historico-audit-notice span {
+        color: var(--hist-muted);
+        font-size: 10.5px;
+        line-height: 1.5;
+    }
+
+.historico-modal-footer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 9px;
+    padding: 15px 24px;
+    border-top: 1px solid var(--hist-border);
+    background: var(--hist-surface-soft);
+}
+
+.historico-close-button,
+.historico-delete-button {
+    min-height: 40px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    padding: 0 16px;
+    border-radius: 9px;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 750;
+    cursor: pointer;
+    transition: transform 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+
+.historico-close-button {
+    border: 1px solid var(--hist-primary);
+    background: var(--hist-primary);
+    color: #ffffff;
+}
+
+    .historico-close-button:hover {
+        transform: translateY(-1px);
+        background: var(--hist-primary-2);
+    }
+
+.historico-delete-button {
+    margin-right: auto;
+    border: 1px solid color-mix(in srgb, var(--hist-danger) 32%, var(--hist-border));
+    background: var(--hist-surface);
+    color: var(--hist-danger);
+}
+
+    .historico-delete-button:hover {
+        transform: translateY(-1px);
+        background: var(--hist-danger-soft);
+    }
+
+/* =========================================================
+   ANIMAÇÃO
+   ========================================================= */
+
+@keyframes historico-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.historico-rotating {
+    animation: historico-spin 0.8s linear infinite;
+}
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
+@media (max-width: 1350px) {
+    .historico-filters {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .historico-filter-title {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 1050px) {
+    .historico-filters {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 900px) {
+    .historico-shell {
+        display: block;
+    }
+
+    .historico-main {
+        width: 100%;
+        margin: 0;
+    }
+
+    .historico-content {
+        padding: 25px 20px 35px;
+    }
+
+    .historico-topbar {
+        padding: 0 20px;
+    }
+}
+
+@media (max-width: 700px) {
+    .historico-topbar {
+        position: relative;
+        height: 68px;
+    }
+
+    .historico-topbar-profile > div:last-child {
+        display: none;
+    }
+
+    .historico-heading {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+        .historico-heading h1 {
+            font-size: 30px;
+        }
+
+    .historico-refresh-main {
+        align-self: flex-start;
+    }
+
+    .historico-toolbar {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .historico-search {
+        width: 100%;
+    }
+
+    .historico-clear-button {
+        align-self: flex-start;
+    }
+
+    .historico-filters {
+        grid-template-columns: 1fr;
+    }
+
+    .historico-filter-title {
+        grid-column: auto;
+    }
+
+    .historico-description {
+        width: 220px;
+    }
+
+    .historico-modal-overlay {
+        padding: 12px;
+    }
+
+    .historico-modal {
+        max-height: calc(100vh - 24px);
+    }
+
+    .historico-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .historico-detail-full {
+        grid-column: auto;
+    }
+
+    .historico-modal-footer {
+        align-items: stretch;
+        flex-direction: column-reverse;
+    }
+
+    .historico-delete-button {
+        width: 100%;
+        margin-right: 0;
+    }
+
+    .historico-close-button {
+        width: 100%;
+    }
+}

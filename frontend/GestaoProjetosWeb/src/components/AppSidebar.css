@@ -1,0 +1,443 @@
+/* =========================================================
+   APP SIDEBAR
+   Barra lateral compartilhada + modo minimizado
+   ========================================================= */
+
+.app-sidebar {
+    width: 270px;
+    min-width: 270px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    flex-shrink: 0;
+    padding: 28px 20px 20px;
+    background: radial-gradient(circle at 120% 0%, rgba(50, 114, 226, 0.2), transparent 28%), #0b1d34 !important;
+    color: #ffffff;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+    transition: width 0.24s ease, min-width 0.24s ease, padding 0.24s ease;
+}
+
+    /* =========================================================
+   BOTÃO MINIMIZAR / EXPANDIR
+   ========================================================= */
+
+    .app-sidebar .sidebar-collapse-button {
+        width: 30px;
+        height: 30px;
+        position: absolute;
+        top: 34px;
+        right: 15px;
+        z-index: 3;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: 1px solid rgba(255, 255, 255, 0.09);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.045);
+        color: #8298b5;
+        cursor: pointer;
+        transition: background 0.17s ease, color 0.17s ease, border-color 0.17s ease, transform 0.17s ease;
+    }
+
+        .app-sidebar .sidebar-collapse-button:hover {
+            border-color: rgba(117, 169, 255, 0.25);
+            background: rgba(50, 113, 226, 0.14);
+            color: #ffffff;
+        }
+
+        .app-sidebar .sidebar-collapse-button:active {
+            transform: scale(0.94);
+        }
+
+    /* =========================================================
+   MARCA
+   ========================================================= */
+
+    .app-sidebar .sidebar-brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 34px;
+        padding-right: 34px;
+    }
+
+    .app-sidebar .sidebar-logo {
+        width: 43px;
+        height: 43px;
+        flex: 0 0 43px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 11px;
+        background: linear-gradient(135deg, #3d82f3, #215bd5);
+        color: #ffffff;
+        box-shadow: 0 8px 20px rgba(31, 91, 213, 0.25);
+    }
+
+    .app-sidebar .sidebar-brand > div:last-child {
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        line-height: 1.15;
+    }
+
+    .app-sidebar .sidebar-brand strong {
+        color: #ffffff;
+        font-size: 16px;
+        font-weight: 750;
+    }
+
+    .app-sidebar .sidebar-brand span {
+        margin-top: 2px;
+        color: #8ea2bd;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    /* =========================================================
+   NAVEGAÇÃO
+   ========================================================= */
+
+    .app-sidebar .sidebar-navigation {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        min-height: 0;
+    }
+
+    .app-sidebar .sidebar-section-title {
+        display: block;
+        margin: 0 10px 9px;
+        color: #627996;
+        font-size: 9px;
+        font-weight: 800;
+        letter-spacing: 1.2px;
+        text-transform: uppercase;
+    }
+
+    .app-sidebar .modules-title {
+        margin-top: 25px;
+    }
+
+    /* =========================================================
+   ITENS
+   ========================================================= */
+
+    .app-sidebar .sidebar-item {
+        width: 100%;
+        min-height: 47px;
+        display: flex;
+        align-items: center;
+        gap: 13px;
+        margin: 2px 0;
+        padding: 0 13px;
+        border: 0;
+        border-radius: 9px;
+        background: transparent;
+        color: #9aabc0;
+        font-family: inherit;
+        font-size: 13px;
+        font-weight: 600;
+        text-align: left;
+        cursor: pointer;
+        transition: background 0.17s ease, color 0.17s ease, transform 0.17s ease;
+    }
+
+        .app-sidebar .sidebar-item svg {
+            flex-shrink: 0;
+            color: #7186a2;
+            transition: color 0.17s ease;
+        }
+
+        .app-sidebar .sidebar-item:hover:not(:disabled) {
+            background: rgba(255, 255, 255, 0.055);
+            color: #ffffff;
+        }
+
+            .app-sidebar .sidebar-item:hover:not(:disabled) svg {
+                color: #91b7ff;
+            }
+
+        .app-sidebar .sidebar-item.active {
+            background: rgba(50, 113, 226, 0.15);
+            color: #ffffff;
+        }
+
+            .app-sidebar .sidebar-item.active svg {
+                color: #75a9ff;
+            }
+
+            .app-sidebar .sidebar-item.active:hover {
+                background: rgba(50, 113, 226, 0.19);
+            }
+
+    /* =========================================================
+   RODAPÉ / UTILIZADOR
+   ========================================================= */
+
+    .app-sidebar .sidebar-footer {
+        margin-top: auto;
+    }
+
+    .app-sidebar .sidebar-user {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 16px 0 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .app-sidebar .sidebar-user-profile {
+        min-width: 0;
+        flex: 1;
+        display: flex;
+        align-items: center;
+        gap: 9px;
+        padding: 4px;
+        margin: -4px;
+        border: 0;
+        border-radius: 9px;
+        background: transparent;
+        color: inherit;
+        font-family: inherit;
+        text-align: left;
+        cursor: pointer;
+        transition: background 0.17s ease, transform 0.17s ease;
+    }
+
+        .app-sidebar .sidebar-user-profile:hover {
+            background: rgba(255, 255, 255, 0.055);
+        }
+
+        .app-sidebar .sidebar-user-profile:active {
+            transform: scale(0.985);
+        }
+
+    .app-sidebar .sidebar-user-avatar {
+        width: 38px;
+        height: 38px;
+        flex: 0 0 38px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 50%;
+        background: #e8effc;
+        color: #245dd7;
+        font-size: 11px;
+        font-weight: 800;
+    }
+
+        .app-sidebar .sidebar-user-avatar img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border-radius: inherit;
+            object-fit: cover;
+            object-position: center;
+        }
+
+    .app-sidebar .sidebar-user-info {
+        min-width: 0;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+        .app-sidebar .sidebar-user-info strong {
+            overflow: hidden;
+            color: #ffffff;
+            font-size: 11px;
+            font-weight: 700;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+        .app-sidebar .sidebar-user-info span {
+            margin-top: 3px;
+            overflow: hidden;
+            color: #7086a2;
+            font-size: 10px;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+        }
+
+    .app-sidebar .sidebar-logout {
+        width: 34px;
+        height: 34px;
+        flex: 0 0 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: 0;
+        border-radius: 8px;
+        background: transparent;
+        color: #778ca7;
+        cursor: pointer;
+        transition: background 0.17s ease, color 0.17s ease, transform 0.17s ease;
+    }
+
+        .app-sidebar .sidebar-logout:hover {
+            background: rgba(255, 255, 255, 0.07);
+            color: #ffffff;
+        }
+
+        .app-sidebar .sidebar-logout:active {
+            transform: scale(0.95);
+        }
+
+html[data-theme="light"] .app-sidebar .sidebar-user .sidebar-logout:nth-last-of-type(2) {
+    color: #7fa8e8;
+}
+
+html[data-theme="dark"] .app-sidebar .sidebar-user .sidebar-logout:nth-last-of-type(2) {
+    color: #f1c65f;
+}
+
+/* =========================================================
+   MODO MINIMIZADO
+   ========================================================= */
+
+.app-sidebar.app-sidebar-collapsed {
+    width: 82px;
+    min-width: 82px;
+    padding: 28px 14px 20px;
+}
+
+    .app-sidebar.app-sidebar-collapsed .sidebar-collapse-button {
+        top: 77px;
+        right: 25px;
+        width: 31px;
+        height: 27px;
+    }
+
+    .app-sidebar.app-sidebar-collapsed .sidebar-brand {
+        justify-content: center;
+        margin-bottom: 58px;
+        padding-right: 0;
+    }
+
+        .app-sidebar.app-sidebar-collapsed .sidebar-brand > div:last-child,
+        .app-sidebar.app-sidebar-collapsed .sidebar-section-title,
+        .app-sidebar.app-sidebar-collapsed .sidebar-item > span,
+        .app-sidebar.app-sidebar-collapsed .sidebar-user-info {
+            display: none;
+        }
+
+    .app-sidebar.app-sidebar-collapsed .sidebar-navigation {
+        align-items: center;
+    }
+
+    .app-sidebar.app-sidebar-collapsed .modules-title {
+        margin-top: 15px;
+    }
+
+    .app-sidebar.app-sidebar-collapsed .sidebar-item {
+        width: 50px;
+        min-height: 48px;
+        justify-content: center;
+        gap: 0;
+        padding: 0;
+        margin: 3px auto;
+    }
+
+        .app-sidebar.app-sidebar-collapsed .sidebar-item svg {
+            width: 20px;
+            height: 20px;
+        }
+
+    .app-sidebar.app-sidebar-collapsed .sidebar-user {
+        flex-direction: column;
+        gap: 7px;
+        padding-top: 15px;
+    }
+
+    .app-sidebar.app-sidebar-collapsed .sidebar-user-profile {
+        width: 46px;
+        min-width: 46px;
+        flex: 0 0 auto;
+        justify-content: center;
+        padding: 4px;
+        margin: 0;
+    }
+
+    .app-sidebar.app-sidebar-collapsed .sidebar-user-avatar {
+        width: 38px;
+        height: 38px;
+    }
+
+    .app-sidebar.app-sidebar-collapsed .sidebar-logout {
+        width: 42px;
+        height: 38px;
+        flex: 0 0 38px;
+    }
+
+/* =========================================================
+   FAZ AS PÁGINAS ACOMPANHAREM A LARGURA
+   ========================================================= */
+
+html[data-sidebar-collapsed="true"] .dashboard-shell {
+    grid-template-columns: 82px minmax(0, 1fr);
+}
+
+html[data-sidebar-collapsed="true"] .dashboard-main {
+    grid-column: 2;
+}
+
+/* Para páginas que usam flex, a própria largura da AppSidebar
+   já faz o conteúdo principal ocupar automaticamente o espaço livre. */
+
+/* =========================================================
+   FOCO / ACESSIBILIDADE
+   ========================================================= */
+
+.app-sidebar button:focus {
+    outline: none;
+}
+
+.app-sidebar button:focus-visible {
+    box-shadow: 0 0 0 2px rgba(117, 169, 255, 0.38);
+}
+
+/* =========================================================
+   SCROLLBAR
+   ========================================================= */
+
+.app-sidebar::-webkit-scrollbar {
+    width: 5px;
+}
+
+.app-sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.app-sidebar::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.12);
+}
+
+    .app-sidebar::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+
+/* =========================================================
+   RESPONSIVO
+   ========================================================= */
+
+@media (max-width: 900px) {
+    .app-sidebar {
+        display: none;
+    }
+
+    html[data-sidebar-collapsed="true"] .dashboard-shell {
+        display: block;
+    }
+}

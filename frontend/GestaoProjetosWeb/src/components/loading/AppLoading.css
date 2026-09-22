@@ -1,0 +1,248 @@
+/* =========================================================
+   APP LOADING
+   Loading global da plataforma
+   ========================================================= */
+
+.app-global-loading {
+    --loading-bg: #f4f7fb;
+    --loading-surface: rgba(255, 255, 255, 0.72);
+    --loading-border: rgba(37, 99, 235, 0.12);
+    --loading-text: #172033;
+    --loading-muted: #7c899c;
+    --loading-primary: #2563eb;
+    --loading-primary-2: #4f8cff;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: radial-gradient(circle at 20% 10%, rgba(37, 99, 235, 0.08), transparent 28%), radial-gradient(circle at 82% 88%, rgba(79, 140, 255, 0.07), transparent 30%), var(--loading-bg);
+    color: var(--loading-text);
+    font-family: Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+html[data-theme="dark"] .app-global-loading {
+    --loading-bg: #0b1828;
+    --loading-surface: rgba(20, 37, 58, 0.72);
+    --loading-border: rgba(117, 169, 255, 0.14);
+    --loading-text: #f4f7fb;
+    --loading-muted: #8fa3bc;
+    --loading-primary: #4f8cff;
+    --loading-primary-2: #75a9ff;
+    background: radial-gradient(circle at 18% 8%, rgba(50, 113, 226, 0.13), transparent 30%), radial-gradient(circle at 85% 88%, rgba(60, 126, 244, 0.08), transparent 31%), var(--loading-bg);
+}
+
+.app-global-loading-glow {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(4px);
+    pointer-events: none;
+}
+
+.app-global-loading-glow-one {
+    width: 380px;
+    height: 380px;
+    top: -210px;
+    right: -120px;
+    background: rgba(37, 99, 235, 0.06);
+}
+
+.app-global-loading-glow-two {
+    width: 320px;
+    height: 320px;
+    bottom: -190px;
+    left: -110px;
+    background: rgba(79, 140, 255, 0.05);
+}
+
+.app-global-loading-content {
+    position: relative;
+    z-index: 2;
+    width: min(410px, calc(100vw - 40px));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 36px 34px 30px;
+    border: 1px solid var(--loading-border);
+    border-radius: 22px;
+    background: var(--loading-surface);
+    box-shadow: 0 30px 80px rgba(14, 28, 48, 0.10), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+html[data-theme="dark"] .app-global-loading-content {
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.24), inset 0 1px 0 rgba(255, 255, 255, 0.025);
+}
+
+.app-global-loading-brand {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.app-global-loading-logo {
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #3d82f3, #215bd5);
+    color: #ffffff;
+    box-shadow: 0 12px 28px rgba(31, 91, 213, 0.25);
+    animation: app-loading-logo-pulse 2.2s ease-in-out infinite;
+}
+
+.app-global-loading-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+}
+
+    .app-global-loading-brand-text strong {
+        color: var(--loading-text);
+        font-size: 20px;
+        font-weight: 850;
+        letter-spacing: 1.8px;
+    }
+
+    .app-global-loading-brand-text span {
+        margin-top: 5px;
+        color: var(--loading-muted);
+        font-size: 11px;
+        font-weight: 600;
+    }
+
+.app-global-loading-progress {
+    width: 100%;
+    height: 3px;
+    position: relative;
+    margin-top: 30px;
+    overflow: hidden;
+    border-radius: 999px;
+    background: color-mix(in srgb, var(--loading-primary) 10%, transparent);
+}
+
+.app-global-loading-progress-bar {
+    width: 38%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: -40%;
+    border-radius: inherit;
+    background: linear-gradient( 90deg, transparent, var(--loading-primary), var(--loading-primary-2), transparent );
+    animation: app-loading-progress 1.35s ease-in-out infinite;
+}
+
+.app-global-loading-status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 17px;
+    color: var(--loading-muted);
+    font-size: 10.5px;
+    font-weight: 600;
+}
+
+.app-global-loading-dots {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+}
+
+    .app-global-loading-dots span {
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background: var(--loading-primary);
+        animation: app-loading-dot 1.2s ease-in-out infinite;
+    }
+
+        .app-global-loading-dots span:nth-child(2) {
+            animation-delay: 0.14s;
+        }
+
+        .app-global-loading-dots span:nth-child(3) {
+            animation-delay: 0.28s;
+        }
+
+.app-global-loading-footer {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    z-index: 2;
+    transform: translateX(-50%);
+    color: var(--loading-muted);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    text-transform: uppercase;
+}
+
+@keyframes app-loading-progress {
+    0% {
+        left: -40%;
+    }
+
+    100% {
+        left: 105%;
+    }
+}
+
+@keyframes app-loading-dot {
+    0%, 60%, 100% {
+        opacity: 0.3;
+        transform: translateY(0);
+    }
+
+    30% {
+        opacity: 1;
+        transform: translateY(-3px);
+    }
+}
+
+@keyframes app-loading-logo-pulse {
+    0%, 100% {
+        transform: scale(1);
+        box-shadow: 0 12px 28px rgba(31, 91, 213, 0.22);
+    }
+
+    50% {
+        transform: scale(1.035);
+        box-shadow: 0 15px 35px rgba(31, 91, 213, 0.31);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .app-global-loading-logo,
+    .app-global-loading-progress-bar,
+    .app-global-loading-dots span {
+        animation-duration: 2.8s;
+    }
+}
+
+@media (max-width: 520px) {
+    .app-global-loading-content {
+        padding: 30px 24px 25px;
+        border-radius: 18px;
+    }
+
+    .app-global-loading-logo {
+        width: 49px;
+        height: 49px;
+    }
+
+    .app-global-loading-brand-text strong {
+        font-size: 18px;
+    }
+
+    .app-global-loading-status {
+        font-size: 9.5px;
+    }
+}
